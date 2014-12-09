@@ -10,3 +10,11 @@ create table anuncio (
    longitud varchar(40) NOT NULL,
    CONSTRAINT PK_id_anuncio PRIMARY KEY(idanuncio)
 )
+
+CREATE TABLE foto (
+idfoto int NOT NULL auto_increment,
+idanuncio int NOT NULL,    
+urlfoto varchar(255)NOT NULL,
+CONSTRAINT PK_id_foto PRIMARY KEY(idfoto),
+CONSTRAINT FK_id_anuncio FOREIGN KEY (idanuncio) REFERENCES anuncio(idanuncio) ON DELETE CASCADE ON UPDATE CASCADE
+)
