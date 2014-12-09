@@ -8,6 +8,13 @@ class Foto{
         $this->idanuncio = $idanuncio;
         $this->urlfoto = $urlfoto;
     }
+    
+    function set($datos, $inicio = 0){
+        $this->idfoto = $datos[0+ $inicio];
+        $this->idanuncio = $datos[1+ $inicio];
+        $this->urlfoto = $datos[2+ $inicio];
+    }
+    
     function getIdfoto() {
         return $this->idfoto;
     }

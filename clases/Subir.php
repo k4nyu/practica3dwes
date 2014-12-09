@@ -3,7 +3,7 @@
 class Subir {
 
     private $files, $input, $destino, $nombre, $accion, $maximo, $tipos, $extensiones, $crearCarpeta;
-    private $errorPHP, $error, $resultado=0, $mensaje="";
+    private $errorPHP, $error, $resultado=0, $mensaje="", $arraynombres= array();
 
     const IGNORAR = 0, RENOMBRAR = 1, REEMPLAZAR = 2;
     const ERROR_INPUT = -1;
@@ -15,12 +15,12 @@ class Subir {
  */
     function __construct($input) {
         $this->input = $input;
-        $this->destino = "subidos/";
+        $this->destino = "../fotos/";
         $this->nombre = "";
         $this->accion = Subir::IGNORAR;
-        $this->maximo = 2 * 1014 * 1024;
+        $this->maximo = 20 * 1014 * 1024;
         $this->crearCarpeta = false;
-        $this->tipos = array();
+        $this->tipos = array("jpg", "png", "JPG", "PNG", "gif", "GIF");
         $this->extensiones = array();
         $this->errorPHP = UPLOAD_ERR_OK;
         $this->error = 0;
@@ -56,6 +56,9 @@ class Subir {
      * 
      */
     
+    function getNombre(){
+        return $this->arraynombres;
+    }
     
     function setDestino($destino) {
         $caracter = substr($destino, -1);
@@ -244,6 +247,7 @@ class Subir {
                             }move_uploaded_file($origen, $destino);
                             $this->resultado++;
                         } elseif ($this->accion == Subir::RENOMBRAR) {
+                            
                             if ($this->nombre === "") {
                                 $this->nombre = "archivo";
                             }
@@ -254,6 +258,8 @@ class Subir {
                                 $i++;
                             }
                             move_uploaded_file($origen, $destino);
+                            $nombre= $destino;
+                            $this->arraynombres[]= $nombre;
                             $this->resultado++;
                         }
                         $this->error = -6;

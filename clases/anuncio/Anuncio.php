@@ -2,17 +2,13 @@
 
 class Anuncio{
     
-    private $idanuncio, $titulo, $precio, $tipo, $descripcion, $fechaalta, $ciudad, $direccion, $habitaciones, $servicios, $longitud;
+    private $idanuncio, $titulo, $precio, $descripcion, $fechaalta, $ciudad, $direccion, $habitaciones, $servicios, $longitud;
     
-    function __construct($idanuncio=null, $titulo=null, $precio=null, $tipo="venta", 
-            $descripcion=null, $fechaalta=null, $ciudad=null, $direccion=null, $habitaciones=null,
-            $servicios=null,$longitud=null){
+    function __construct($idanuncio=null, $titulo=null, $precio=null, $descripcion=null, $ciudad=null, $direccion=null, $habitaciones=null,$servicios=null,$longitud=null){
         $this->idanuncio=$idanuncio;
         $this->titulo=$titulo;
         $this->precio=$precio;
-        $this->tipo=$tipo;
         $this->descripcion=$descripcion;
-        $this->fechaalta=$fechaalta;
         $this->ciudad=$ciudad;
         $this->direccion=$direccion;
         $this->habitaciones=$habitaciones;
@@ -24,14 +20,12 @@ class Anuncio{
         $this->idanuncio= $datos[0+$inicio];
         $this->titulo= $datos[1+$inicio];
         $this->precio= $datos[2+$inicio];
-        $this->tipo= $datos[3+$inicio];
-        $this->descripcion= $datos[4+$inicio]; 
-        $this->fechaalta= $datos[5+$inicio]; 
-        $this->ciudad= $datos[6+$inicio]; 
-        $this->direccion= $datos[7+$inicio]; 
-        $this->habitaciones= $datos[8+$inicio]; 
-        $this->servicios= $datos[9+$inicio]; 
-        $this->longitud= $datos[10+$inicio]; 
+        $this->descripcion= $datos[3+$inicio];
+        $this->ciudad= $datos[4+$inicio]; 
+        $this->direccion= $datos[5+$inicio]; 
+        $this->habitaciones= $datos[6+$inicio]; 
+        $this->servicios= $datos[7+$inicio]; 
+        $this->longitud= $datos[8+$inicio]; 
     }
     
     function getIdanuncio() {
@@ -46,16 +40,8 @@ class Anuncio{
         return $this->precio;
     }
 
-    function getTipo() {
-        return $this->tipo;
-    }
-
     function getDescripcion() {
         return $this->descripcion;
-    }
-
-    function getFechaalta() {
-        return $this->fechaalta;
     }
 
     function getCiudad() {
@@ -90,16 +76,8 @@ class Anuncio{
         $this->precio = $precio;
     }
 
-    function setTipo($tipo) {
-        $this->tipo = $tipo;
-    }
-
     function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
-    }
-
-    function setFechaalta($fechaalta) {
-        $this->fechaalta = $fechaalta;
     }
 
     function setCiudad($ciudad) {
