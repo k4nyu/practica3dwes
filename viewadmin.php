@@ -175,7 +175,7 @@ and open the template in the editor.
                                             <div class="form-group">
                                                 <label>Agregar fotos: </label><input type="file" name="archivo[]" multiple /><br>
                                             </div>
-                                            <input class="btn btn-success" value="Crear"/>
+                                            <input type="submit" class="btn btn-success" value="Crear"/>
                                         </form>
                                     </div>
                                 </div>
