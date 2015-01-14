@@ -107,17 +107,18 @@ and open the template in the editor.
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="alert alert-success">
-                                        <?php
-                                        if ($r == 1) {
-                                            echo "Se ha realizado con exito!";
-                                        }?>
-                                    </div>
-                                    <div class="alert alert-danger">
-                                        <?phpif ($r == -1) {
-                                            echo "Error en la operacion";
-                                        }
-                                        ?>
+                                    <?php
+                                    if ($r == 1) {?>
+                                        <div class="alert alert-success">
+                                          ¡Se ha realizado con exito!
+                                        </div>
+                                    <?php }?>
+                                    
+                                    
+                                        <?php if ($r == -1) {?>
+                                        <div class="alert alert-danger">
+                                            Error en la operacion
+                                        <?php } ?>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="table-responsive">
@@ -147,7 +148,7 @@ and open the template in the editor.
                                                         <td> <?php echo $objeto->getRol(); ?></td>
                                                         <td> <?php echo $objeto->getFechalogin(); ?></td>
                                                         <td><a class='editar' data-id='<?php echo $objeto->getLogin(); ?>' href='vieweditarusuario.php?id=<?php echo $objeto->getLogin(); ?>'>Editar</a></td>
-                                                        <td><a data-nombre='<?php echo $objeto->getLogin(); ?>' class='borrar' href='php/phpdeleteusuario.php?id=<?php echo $objeto->getLogin(); ?>'>Borrar</a></td>
+                                                        <td><a data-nombre='<?php echo $objeto->getLogin(); ?>' class='borrar' href='phpdeleteusuario.php?id=<?php echo $objeto->getLogin(); ?>'>Borrar</a></td>
                                                     </tr>
                                                 <?php } ?>
                             <!--<tr>
