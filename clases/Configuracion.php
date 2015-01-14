@@ -7,5 +7,5 @@ class Configuracion {
     const USUARIO = "root";
     const CLAVE = "";
     const PEZARANA = "pez araña";
-    const RPP = 20;
+    const RPP = 3;
 }

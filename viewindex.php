@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/main.js"></script>
@@ -23,12 +24,21 @@
     </head>
     <body>
         <?php
+        
         require 'require/comun.php';
         include "clases/anuncio/Anuncio.php";
         include "clases/foto/Foto.php";
         include "clases/anuncio/ModeloAnuncio.php";
         include "clases/foto/ModeloFoto.php";
+        
+        if(!$sesion->get("__usuario") instanceof Usuario){
+        header("Location: viewlogin.php?sesion=-1");
+         }
+         
         $p = 0;
+        
+        $r = Leer::get("r");
+        $login = Leer::get("login");
         if (Leer::get("p") != null) {
             $p = Leer::get("p");
         }
@@ -84,16 +94,26 @@
         $paginas = Configuracion::RPP;
         $baseDatos = new BaseDatos();
         $modelo = new ModeloAnuncio($baseDatos);
+        $modelousuario = new ModeloUsuario($baseDatos);
         $modelofoto = new ModeloFoto($baseDatos);
-        $filas = $modelo->getAnuncios($p, 10, $condicion, $parametros, $orderby);
+        $filas = $modelo->getAnuncios($p, $paginas, $condicion, $parametros, $orderby);
         $numeroRegistros = $modelo->count();
         $enlaces = Util::getEnlacesPaginacion($p, $paginas, $numeroRegistros);
         ?>
         <div id="wrapper">
+            <?php
+            if($r==1){
+                $usuario = $modelousuario->getLogin($login);
+                $nombreusuario= $usuario->getNombre();?>
+            <div style="margin-left: 30px; margin-top: 10px; margin-bottom: -40px;">
+                <h4 style="float: left;">Hola <a href="viewpanelusuario.php?login=<?php echo $login;?>"><?php echo $nombreusuario;?></a>.</h4>
+                <a href="phpcerrarsesion.php?login=<?php echo $login; ?>"><button style="margin-left: 15px;" class="btn btn-danger">Cerrar sesión</button></a>
+            </div>
+            
+            <?php }?>
             <div>
-
                 <form role="form" action="viewindex.php" method="POST">
-                    <div style="width: 210px; float: left; margin-left: 20px; margin-top: 40px;">
+                    <div style="width: 210px; float: left; margin-left: -95px; margin-top: 40px;">
                         <label>Palabras clave: </label><input class="form-control" type="text" name="palabras"/>
                     </div>
                     <div style="width: 210px; float: left; margin-left: 20px; margin-top: 40px;">
@@ -152,23 +172,25 @@
                                 <?php } ?>
                             </tr>
                         <?php } ?>
-                        <!--<tr>
-                        <td colspan="5">
-                        <?php echo $enlaces["inicio"]; ?>
-                        <?php echo $enlaces["anterior"]; ?>
-                        <?php echo $enlaces["primero"]; ?>
-                        <?php echo $enlaces["segundo"]; ?>
-                        <?php echo $enlaces["actual"]; ?>
-                        <?php echo $enlaces["cuarto"]; ?>
-                        <?php echo $enlaces["quinto"]; ?>
-                        <?php echo $enlaces["siguiente"]; ?>
-                        <?php echo $enlaces["ultimo"]; ?>
-                        </td>
-                        </tr>-->
+                        <tr>
+                        <style>
+                            tr td li{float: left; margin-right: 10px;}
+                        </style>
+                            <td style="list-style: none;" colspan="10">
+                            <?php echo $enlaces["inicio"]; ?>
+                            <?php echo $enlaces["anterior"]; ?>
+                            <?php echo $enlaces["primero"]; ?>
+                            <?php echo $enlaces["segundo"]; ?>
+                            <?php echo $enlaces["actual"]; ?>
+                            <?php echo $enlaces["cuarto"]; ?>
+                            <?php echo $enlaces["quinto"]; ?>
+                            <?php echo $enlaces["siguiente"]; ?>
+                            <?php echo $enlaces["ultimo"]; ?>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
-            <a  href="viewadmin.php"><button class="btn btn-primary btn-lg btn-block">Administrar</button></a>
         </div>
     </body>
 </html>

@@ -36,6 +36,11 @@ and open the template in the editor.
             include "clases/foto/Foto.php";
             include "clases/anuncio/ModeloAnuncio.php";
             include "clases/foto/ModeloFoto.php";
+            if(!$sesion->get("__usuario") instanceof Usuario){
+            header("Location: viewlogin.php?sesion=-1");
+            }
+            $r = Leer::get("r");
+            $login = Leer::get("login");
             $p = 0;
             if (Leer::get("p") != null) {
                 $p = Leer::get("p");
@@ -44,6 +49,7 @@ and open the template in the editor.
             $paginas = Configuracion::RPP;
             $baseDatos = new BaseDatos();
             $modelo = new ModeloAnuncio($baseDatos);
+            $modelousuario = new ModeloUsuario($baseDatos);
             $modelofoto = new ModeloFoto($baseDatos);
             $filas = $modelo->getAnuncios();
             $numeroRegistros = $modelo->count();
@@ -63,7 +69,13 @@ and open the template in the editor.
                                 <a href="viewadmin.php"><i class="fa fa-dashboard fa-fw"></i> Panel principal</a>
                             </li>
                             <li>
-                                <a href="viewindex.php">Volver a VentaCasa</a>
+                                <a href="vieweditarusuarios.php">Editar usuarios</a>
+                            </li>
+                            <li>
+                                
+                            </li>
+                            <li>
+                                <a href="phpcerrarsesion.php?login=<?php echo $login; ?>">Cerrar sesión</a>
                             </li>
                     </div>
             </nav>
