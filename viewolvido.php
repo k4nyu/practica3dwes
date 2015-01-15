@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+    require "require/comun.php";
+    $r= Leer::get("r");
+    ?>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +74,7 @@
                         <br>
                         <br>
                         <div class="form-group">
-                                    ¿No tienes cuenta con nosotros? <a href="viewregistro.php">¡Regístrate!</a>
+                                    ¿Ya tienes tu clave? Inicia sesión <a href="viewlogin.php">aquí</a>.
                                 </div>
                     </div>
                 </div>

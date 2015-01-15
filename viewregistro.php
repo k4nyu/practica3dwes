@@ -110,7 +110,7 @@
                         <br>
                         <br>
                         <div class="form-group">
-                                    ¿No tienes cuenta con nosotros? <a href="viewregistro.php">¡Regístrate!</a>
+                                    ¿Ya tienes cuenta? Inicia sesión <a href="viewlogin.php">aquí</a>.
                                 </div>
                     </div>
                 </div>
