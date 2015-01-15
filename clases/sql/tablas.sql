@@ -19,7 +19,7 @@ CONSTRAINT PK_id_foto PRIMARY KEY(idfoto),
 CONSTRAINT FK_id_anuncio FOREIGN KEY (idanuncio) REFERENCES anuncio(idanuncio) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE `NewTable` (
+CREATE TABLE `usuario` (
 `login`  varchar(255) NOT NULL ,
 `clave`  varchar(255) NOT NULL ,
 `nombre`  varchar(255) NOT NULL ,
