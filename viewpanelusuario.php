@@ -6,6 +6,7 @@
     $a= Leer::get("a");
     $e= Leer::get("e");
     $i= Leer::get("i");
+    $error = Leer::get("error");
     
     $login = Leer::get("login");
     $bd = new BaseDatos();
@@ -81,16 +82,17 @@
                                 <div style="color: red; margin-top: 15px;" class="form-group">
                                     <?php if($n == -1){?>
                                     Rellena el nombre.<br>
-                                    <?php $r=0;} 
+                                    <?php } 
                                     if($a == -1){?>
                                     Rellena los apellidos.<br>
-                                    <?php $r=0;} 
+                                    <?php } 
                                     if($e == -1){?>
                                     Rellena el email.<br>
-                                    <?php $r=0;}
+                                    <?php }
                                     if($i == -1){?>
                                     Las contraseñas deben coincidir.<br>
-                                    <?php $r=0;} ?> 
+                                    <?php } ?> 
+                                    
                                 </div>
                             </fieldset>
                         </form>

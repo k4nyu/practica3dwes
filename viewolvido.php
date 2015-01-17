@@ -45,13 +45,16 @@
                         <h3 class="panel-title">Recuperación de contraseña</h3>
                     </div>
                     <div style="margin-top: 15px; margin-left: 20px;">
-                        Por favor, introduce tu nombre de usuario o email:
+                        Por favor, introduce tu nombre de usuario para recuperar tu clave:
                     </div>
                     <div class="panel-body">   
                         <form role="form" method="POST" action="phpolvido.php">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Nombre de usuario" name="login" type="text" autofocus>
+                                </div>
+                                <div style="margin-top: 15px; margin-bottom: 15px; margin-left: 3px;">
+                                    O tu email para obtener tu nombre de usuario:
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Email" name="email" type="email" value="">
@@ -74,7 +77,7 @@
                         <br>
                         <br>
                         <div class="form-group">
-                                    ¿Ya tienes tu clave? Inicia sesión <a href="viewlogin.php">aquí</a>.
+                                    ¿Ya tienes tu clave o nombre de usuario? Inicia sesión <a href="viewlogin.php">aquí</a>.
                                 </div>
                     </div>
                 </div>

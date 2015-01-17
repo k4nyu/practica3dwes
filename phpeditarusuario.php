@@ -44,7 +44,17 @@ if($clave != $repite){
     $r=-1;
 } 
 if($r==-1){
-    header("Location: viewpanelusuario.php?".$error);
+    
+    header("Location: viewpanelusuario.php?".$error."&login=".$login);
+}
+elseif($clave=="" && $repite==""){
+   $usuario= new Usuario($login, $clave, $nombre, $apellidos, $email);
+   $usuariorescatado = $modelo->getLogin($login);
+   $claverescatada=$usuariorescatado->getClave();
+   $usuario->setClave($claverescatada);
+   $modelo->edit($usuario);
+   header("Location: viewactualizado.php?r=1&login=$login");
+   $bd->closeConexion();
 }
 else{
    $usuario= new Usuario($login, $clave, $nombre, $apellidos, $email);
